@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IndicatorRequestServiceWrapper" targetNamespace="http://enterprise.netbeans.org/bpel/IndicatorRequestServiceWrapper" xmlns:tns="http://enterprise.netbeans.org/bpel/IndicatorRequestServiceWrapper" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService">
+    <import location="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?WSDL" namespace="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService"/>
+    <plnk:partnerLinkType name="RequestLinkType">
+        <plnk:role name="RequestRole" portType="ns:RequestPortType"/>
+    </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="RequestLinkTypeBpel">
+        <plnk:role name="BpelRequestRole" portType="ns:RequestPortType"/>
+    </plnk:partnerLinkType>
+</definitions>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="OrchestrationService" targetNamespace="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" xmlns:ns0="http://www.shcherbakov.ru/responce" xmlns:ns="http://www.shcherbakov.ru/request">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService">
+            <xsd:import namespace="http://www.shcherbakov.ru/responce" schemaLocation="localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.xsd_1.xsd"/>
+            <xsd:import namespace="http://www.shcherbakov.ru/request" schemaLocation="localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.xsd_1.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="OrchestrationServiceOperationRequest">
+        <part name="inputPart" element="ns:request"/>
+    </message>
+    <message name="OrchestrationServiceOperationResponse">
+        <part name="outputPart" element="ns0:responce"/>
+    </message>
+    <portType name="OrchestrationServicePortType">
+        <operation name="OrchestrationServiceOperation">
+            <input name="input1" message="tns:OrchestrationServiceOperationRequest"/>
+            <output name="output1" message="tns:OrchestrationServiceOperationResponse"/>
+        </operation>
+    </portType>
+</definitions>

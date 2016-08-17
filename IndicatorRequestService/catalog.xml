@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/IndicatorRequestService/src/java/request/IndicatorRequestService.wsdl" uri="src/conf/xml-resources/web-services/IndicatorRequestService/wsdl/IndicatorRequestService.wsdl"/>
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/IndicatorRequestService/src/java/request/simpleResponce.xsd" uri="src/conf/xml-resources/web-services/IndicatorRequestService/wsdl/simpleResponce.xsd"/>
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/IndicatorRequestService/src/java/request/request.xsd" uri="src/conf/xml-resources/web-services/IndicatorRequestService/wsdl/request.xsd"/>
+</catalog>
+
+

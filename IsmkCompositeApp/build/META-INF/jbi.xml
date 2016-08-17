@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="http://enterprise.netbeans.org/bpel/IsmkBpelModule/ismkBpelModule" xmlns:ns2="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" xmlns:ns3="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" xmlns:ns4="IsmkCompositeApp" xmlns:ns5="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" xmlns:ns6="http://www.shcherbakov.ru/transformation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/jbi ./jbi.xsd">
+    <service-assembly>
+        <identification>
+            <name>IsmkCompositeApp</name>
+            <description>Represents the Service Assembly of IsmkCompositeApp</description>
+        </identification>
+        <service-unit>
+            <identification>
+                <name>IsmkCompositeApp-IsmkBpelModule</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>IsmkBpelModule.jar</artifacts-zip>
+                <component-name>sun-bpel-engine</component-name>
+            </target>
+        </service-unit>
+        <service-unit>
+            <identification>
+                <name>IsmkCompositeApp-sun-http-binding</name>
+                <description>Represents this Service Unit</description>
+            </identification>
+            <target>
+                <artifacts-zip>sun-http-binding.jar</artifacts-zip>
+                <component-name>sun-http-binding</component-name>
+            </target>
+        </service-unit>
+        <connections>
+            <connection>
+                <consumer endpoint-name="RequestRole_partnerRole" service-name="ns1:IndicatorRequestPartnerLink"/>
+                <provider endpoint-name="IndicatorRequestServicePort" service-name="ns2:IndicatorRequestServiceService"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="IndicatorDataServiceRole_partnerRole" service-name="ns1:IndicatorDataPartnerLink"/>
+                <provider endpoint-name="IndicatorDataServicePort" service-name="ns3:IndicatorDataServiceService"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="casaPort1" service-name="ns4:IsmkCompositeAppService1"/>
+                <provider endpoint-name="OrchestrationServiceRole_myRole" service-name="ns1:OrchestrationServicePartnerLink"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="IndicatorResponceServiceRole_partnerRole" service-name="ns1:IndicatorResponcePartnerLink"/>
+                <provider endpoint-name="IndicatorResponceServicePortTypeBindingPort" service-name="ns5:IndicatorResponceServiceService"/>
+            </connection>
+            <connection>
+                <consumer endpoint-name="TransformationRole_partnerRole" service-name="ns1:TransformationPartnerLink"/>
+                <provider endpoint-name="TransformationPortTypeBindingPort" service-name="ns6:TransformationServiceService"/>
+            </connection>
+        </connections>
+    </service-assembly>
+</jbi>

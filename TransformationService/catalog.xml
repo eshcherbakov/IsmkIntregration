@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/TransformationService/src/java/transform/TransformationService.wsdl" uri="src/conf/xml-resources/web-services/TransformationService/wsdl/TransformationService.wsdl"/>
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/TransformationService/src/java/transform/request.xsd" uri="src/conf/xml-resources/web-services/TransformationService/wsdl/request.xsd"/>
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/TransformationService/src/java/transform/responce.xsd" uri="src/conf/xml-resources/web-services/TransformationService/wsdl/responce.xsd"/>
+    <system systemId="file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/TransformationService/src/java/transform/simpleResponce.xsd" uri="src/conf/xml-resources/web-services/TransformationService/wsdl/simpleResponce.xsd"/>
+</catalog>
+

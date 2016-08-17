@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="TransformationService">
+      <implementation-class>transform.TransformationService</implementation-class>
+      <wsdl-url>file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/TransformationService/src/java/transform/TransformationService.wsdl</wsdl-url>
+      <local-wsdl-file>TransformationService.wsdl</local-wsdl-file>
+      <service-name>TransformationServiceService</service-name>
+      <port-name>TransformationPortTypeBindingPort</port-name>
+      <package-name>ru.shcherbakov.transformation</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <use-provider>false</use-provider>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </service>
+  </services>
+  <clients/>
+</jax-ws>

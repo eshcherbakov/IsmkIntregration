@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.3-hudson-757-SNAPSHOT. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" xmlns:ns="http://www.shcherbakov.ru/simpleResponce" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="IndicatorDataService" targetNamespace="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService">
+            <xsd:import namespace="http://www.shcherbakov.ru/simpleResponce" schemaLocation="http://localhost:8080/IndicatorDataServiceService/IndicatorDataService?xsd=1"></xsd:import>
+        </xsd:schema>
+    </types>
+    <message name="IndicatorDataServiceOperationRequest">
+        <part name="inputPart" element="ns:simpleResponce"></part>
+    </message>
+    <message name="IndicatorDataServiceOperationResponse">
+        <part name="outputPart" element="ns:simpleResponce"></part>
+    </message>
+    <portType name="IndicatorDataServicePortType">
+        <operation name="IndicatorDataServiceOperation">
+            <input name="input1" message="tns:IndicatorDataServiceOperationRequest"></input>
+            <output name="output1" message="tns:IndicatorDataServiceOperationResponse"></output>
+        </operation>
+    </portType>
+    <binding name="IndicatorDataServiceBinding" type="tns:IndicatorDataServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <operation name="IndicatorDataServiceOperation">
+            <soap:operation style="document"></soap:operation>
+            <input name="input1">
+                <soap:body use="literal" parts="inputPart"></soap:body>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" parts="outputPart"></soap:body>
+            </output>
+        </operation>
+    </binding>
+    <service name="IndicatorDataServiceService">
+        <port name="IndicatorDataServicePort" binding="tns:IndicatorDataServiceBinding">
+            <soap:address location="http://localhost:8080/IndicatorDataServiceService/IndicatorDataService"></soap:address>
+        </port>
+    </service>
+</definitions>

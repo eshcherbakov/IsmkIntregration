@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <nextCatalog catalog="nbproject/private/cache/retriever/catalog.xml"/>
+    <system systemId="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?WSDL" uri="src/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.wsdl"/>
+    <system systemId="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?xsd=2" uri="src/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?xsd=1" uri="src/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TransformationServiceService/TransformationService?WSDL" uri="src/localhost_8080/TransformationServiceService/TransformationService.wsdl"/>
+    <system systemId="http://localhost:8080/TransformationServiceService/TransformationService?xsd=1" uri="src/localhost_8080/TransformationServiceService/TransformationService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/TransformationServiceService/TransformationService?xsd=2" uri="src/localhost_8080/TransformationServiceService/TransformationService.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/TransformationServiceService/TransformationService?xsd=3" uri="src/localhost_8080/TransformationServiceService/TransformationService.xsd_3.xsd"/>
+    <system systemId="http://localhost:8080/IndicatorResponceServiceService/IndicatorResponceService?WSDL" uri="src/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.wsdl"/>
+    <system systemId="http://localhost:8080/IndicatorResponceServiceService/IndicatorResponceService?xsd=1" uri="src/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/IndicatorResponceServiceService/IndicatorResponceService?xsd=2" uri="src/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/IndicatorDataServiceService/IndicatorDataService?WSDL" uri="src/localhost_8080/IndicatorDataServiceService/IndicatorDataService.wsdl"/>
+    <system systemId="http://localhost:8080/IndicatorDataServiceService/IndicatorDataService?xsd=1" uri="src/localhost_8080/IndicatorDataServiceService/IndicatorDataService.xsd_1.xsd"/>
+</catalog>
+
+
+
+
+

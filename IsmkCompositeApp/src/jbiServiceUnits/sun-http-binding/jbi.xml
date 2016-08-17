@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jbi xmlns="http://java.sun.com/xml/ns/jbi" xmlns:ns1="http://enterprise.netbeans.org/bpel/IsmkBpelModule/ismkBpelModule" xmlns:ns2="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" xmlns:ns3="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" xmlns:ns4="IsmkCompositeApp" xmlns:ns5="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" xmlns:ns6="http://www.shcherbakov.ru/transformation" xmlns:ns7="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" version="1.0">
+    <services binding-component="true">
+        <provides endpoint-name="IndicatorRequestServicePort" interface-name="ns2:RequestPortType" service-name="ns2:IndicatorRequestServiceService"/>
+        <provides endpoint-name="IndicatorDataServicePort" interface-name="ns3:IndicatorDataServicePortType" service-name="ns3:IndicatorDataServiceService"/>
+        <provides endpoint-name="IndicatorResponceServicePortTypeBindingPort" interface-name="ns5:IndicatorResponceServicePortType" service-name="ns5:IndicatorResponceServiceService"/>
+        <provides endpoint-name="TransformationPortTypeBindingPort" interface-name="ns6:TransformationPortType" service-name="ns6:TransformationServiceService"/>
+        <consumes endpoint-name="casaPort1" interface-name="ns7:OrchestrationServicePortType" service-name="ns4:IsmkCompositeAppService1"/>
+    </services>
+</jbi>

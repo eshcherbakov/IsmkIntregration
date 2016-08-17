@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:ejbjarproject2="http://www.netbeans.org/ns/j2ee-ejbjarproject/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <mkdir dir="${classes.dir}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${j2ee.platform.wsimport.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-service-IndicatorResponceService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/IndicatorResponceService"/>
+        <property name="service-wsdl-IndicatorResponceService" location="${meta.inf}/xml-resources/web-services/IndicatorResponceService/wsdl/IndicatorResponceService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/IndicatorResponceService" destdir="${build.generated.dir}/jax-wsCache/service/IndicatorResponceService" wsdl="${service-wsdl-IndicatorResponceService}" catalog="catalog.xml" extension="true" verbose="true" xnocompile="true">
+            <depends file="${wsdl-IndicatorResponceService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/IndicatorResponceService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/IndicatorResponceService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <property name="targetLocation-IndicatorResponceService" location="${meta.inf}/wsdl/IndicatorResponceService"/>
+        <property name="sourceLocation-IndicatorResponceService" location="${meta.inf}/xml-resources/web-services/IndicatorResponceService/wsdl/"/>
+        <copy todir="${targetLocation-IndicatorResponceService}">
+            <fileset dir="${sourceLocation-IndicatorResponceService}"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-IndicatorResponceService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/service/IndicatorResponceService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/netbeans/j2ee/wsdl/indicatorresponceservice/indicatorresponceservice"/>
+    </target>
+    <target name="wsimport-service-generate" depends="wsimport-service-IndicatorResponceService"/>
+</project>

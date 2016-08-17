@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.3-hudson-757-SNAPSHOT. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" xmlns:ns0="http://www.shcherbakov.ru/simpleResponce" xmlns:ns="http://www.shcherbakov.ru/request" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="IndicatorRequestService" targetNamespace="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService">
+            <xsd:import namespace="http://www.shcherbakov.ru/simpleResponce" schemaLocation="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?xsd=2"></xsd:import>
+            <xsd:import namespace="http://www.shcherbakov.ru/request" schemaLocation="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?xsd=1"></xsd:import>
+        </xsd:schema>
+    </types>
+    <message name="ValidateRequestOperationRequest">
+        <part name="inputPart" element="ns:request"></part>
+    </message>
+    <message name="ValidateRequestOperationResponse">
+        <part name="outputPart" element="ns0:simpleResponce"></part>
+    </message>
+    <portType name="RequestPortType">
+        <operation name="ValidateRequestOperation">
+            <input name="input1" message="tns:ValidateRequestOperationRequest"></input>
+            <output name="output1" message="tns:ValidateRequestOperationResponse"></output>
+        </operation>
+    </portType>
+    <binding name="IndicatorRequestServiceBinding" type="tns:RequestPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <operation name="ValidateRequestOperation">
+            <soap:operation style="document"></soap:operation>
+            <input name="input1">
+                <soap:body use="literal" parts="inputPart"></soap:body>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" parts="outputPart"></soap:body>
+            </output>
+        </operation>
+    </binding>
+    <service name="IndicatorRequestServiceService">
+        <port name="IndicatorRequestServicePort" binding="tns:IndicatorRequestServiceBinding">
+            <soap:address location="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService"></soap:address>
+        </port>
+    </service>
+</definitions>

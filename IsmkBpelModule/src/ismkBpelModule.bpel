@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process
+    name="ismkBpelModule"
+    targetNamespace="http://enterprise.netbeans.org/bpel/IsmkBpelModule/ismkBpelModule"
+    xmlns:tns="http://enterprise.netbeans.org/bpel/IsmkBpelModule/ismkBpelModule"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+    xmlns:sxt="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Trace" 
+    xmlns:sxed="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor"
+    xmlns:sxeh="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/ErrorHandling" xmlns:sxed2="http://www.sun.com/wsbpel/2.0/process/executable/SUNExtension/Editor2" xmlns:ns0="http://www.shcherbakov.ru/request" xmlns:ns1="http://www.shcherbakov.ru/simpleResponce" xmlns:ns2="http://www.shcherbakov.ru/responce">
+    <import namespace="http://enterprise.netbeans.org/bpel/IndicatorRequestServiceWrapper" location="IndicatorRequestServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" location="http://localhost:8080/IndicatorRequestServiceService/IndicatorRequestService?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/TransformationServiceWrapper" location="TransformationServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://www.shcherbakov.ru/transformation" location="http://localhost:8080/TransformationServiceService/TransformationService?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/IndicatorDataServiceWrapper" location="IndicatorDataServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" location="http://localhost:8080/IndicatorDataServiceService/IndicatorDataService?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/IndicatorResponceServiceWrapper" location="IndicatorResponceServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" location="http://localhost:8080/IndicatorResponceServiceService/IndicatorResponceService?WSDL" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://enterprise.netbeans.org/bpel/OrchestrationServiceWrapper" location="OrchestrationServiceWrapper.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <import namespace="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" location="OrchestrationService.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <partnerLinks>
+        <partnerLink name="OrchestrationServicePartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/OrchestrationServiceWrapper" partnerLinkType="tns:OrchestrationServiceLinkType" myRole="OrchestrationServiceRole"/>
+        <partnerLink name="IndicatorRequestPartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/IndicatorRequestServiceWrapper" partnerLinkType="tns:RequestLinkType" partnerRole="RequestRole"/>
+        <partnerLink name="TransformationPartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/TransformationServiceWrapper" partnerLinkType="tns:TransformationLinkType" partnerRole="TransformationRole"/>
+        <partnerLink name="IndicatorDataPartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/IndicatorDataServiceWrapper" partnerLinkType="tns:IndicatorDataServiceLinkType" partnerRole="IndicatorDataServiceRole"/>
+        <partnerLink name="IndicatorResponcePartnerLink" xmlns:tns="http://enterprise.netbeans.org/bpel/IndicatorResponceServiceWrapper" partnerLinkType="tns:IndicatorResponceServiceLinkType" partnerRole="IndicatorResponceServiceRole"/>
+    </partnerLinks>
+    <variables>
+        <variable name="OrchestrationServiceOperationOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" messageType="tns:OrchestrationServiceOperationResponse"/>
+        <variable name="OrchestrationServiceOperationIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" messageType="tns:OrchestrationServiceOperationRequest"/>
+        <variable name="IndicatorResponceServiceOperationOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" messageType="tns:IndicatorResponceServiceOperationResponse"/>
+        <variable name="IndicatorResponceServiceOperationIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" messageType="tns:IndicatorResponceServiceOperationRequest"/>
+        <variable name="BackTransformOperationOut" xmlns:tns="http://www.shcherbakov.ru/transformation" messageType="tns:BackTransformOperationOutput"/>
+        <variable name="BackTransformOperationIn" xmlns:tns="http://www.shcherbakov.ru/transformation" messageType="tns:BackTransformOperationInput"/>
+        <variable name="IndicatorDataServiceOperationOut" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" messageType="tns:IndicatorDataServiceOperationResponse"/>
+        <variable name="IndicatorDataServiceOperationIn" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" messageType="tns:IndicatorDataServiceOperationRequest"/>
+        <variable name="DirectTransformOperationOut" xmlns:tns="http://www.shcherbakov.ru/transformation" messageType="tns:DirectTransformOperationOutput"/>
+        <variable name="DirectTransformOperationIn" xmlns:tns="http://www.shcherbakov.ru/transformation" messageType="tns:DirectTransformOperationInput"/>
+        <variable name="ValidateRequestOperationOut1" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" messageType="tns:ValidateRequestOperationResponse"/>
+        <variable name="ValidateRequestOperationIn1" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" messageType="tns:ValidateRequestOperationRequest"/>
+    </variables>
+    <sequence>
+        <receive name="Receive1" createInstance="yes" partnerLink="OrchestrationServicePartnerLink" operation="OrchestrationServiceOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" portType="tns:OrchestrationServicePortType" variable="OrchestrationServiceOperationIn"/>
+        <assign name="Assign1">
+            <copy>
+                <from>$OrchestrationServiceOperationIn.inputPart/ns0:indicatorsDataType</from>
+                <to>$ValidateRequestOperationIn1.inputPart/ns0:indicatorsDataType</to>
+            </copy>
+        </assign>
+        <invoke name="Invoke1" partnerLink="IndicatorRequestPartnerLink" operation="ValidateRequestOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" portType="tns:RequestPortType" inputVariable="ValidateRequestOperationIn1" outputVariable="ValidateRequestOperationOut1"/>
+        <if name="If1">
+            <condition>$ValidateRequestOperationOut1.outputPart/ns1:responce = 'successValid'</condition>
+            <sequence name="Sequence1">
+                <assign name="Assign3">
+                    <copy>
+                        <from>$OrchestrationServiceOperationIn.inputPart/ns0:indicatorsDataType</from>
+                        <to>$DirectTransformOperationIn.inputPart/ns0:indicatorsDataType</to>
+                    </copy>
+                </assign>
+                <invoke name="Invoke2" partnerLink="TransformationPartnerLink" operation="DirectTransformOperation" xmlns:tns="http://www.shcherbakov.ru/transformation" portType="tns:TransformationPortType" inputVariable="DirectTransformOperationIn" outputVariable="DirectTransformOperationOut"/>
+                <if name="If2">
+                    <condition>$DirectTransformOperationOut.outputPart/ns1:responce = 'successDirectTransform'</condition>
+                    <sequence name="Sequence2">
+                        <assign name="Assign7">
+                            <copy>
+                                <from>$ValidateRequestOperationOut1.outputPart/ns1:responce</from>
+                                <to>$IndicatorDataServiceOperationIn.inputPart/ns1:responce</to>
+                            </copy>
+                        </assign>
+                        <invoke name="Invoke3" partnerLink="IndicatorDataPartnerLink" operation="IndicatorDataServiceOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" portType="tns:IndicatorDataServicePortType" inputVariable="IndicatorDataServiceOperationIn" outputVariable="IndicatorDataServiceOperationOut"/>
+                        <if name="If3">
+                            <condition>$IndicatorDataServiceOperationOut.outputPart/ns1:responce = 'successIndicatorDataService'</condition>
+                            <sequence name="Sequence3">
+                                <assign name="Assign8">
+                                    <copy>
+                                        <from>$IndicatorDataServiceOperationOut.outputPart/ns1:responce</from>
+                                        <to>$BackTransformOperationIn.inputPart/ns1:responce</to>
+                                    </copy>
+                                </assign>
+                                <invoke name="Invoke4" partnerLink="TransformationPartnerLink" operation="BackTransformOperation" xmlns:tns="http://www.shcherbakov.ru/transformation" portType="tns:TransformationPortType" inputVariable="BackTransformOperationIn" outputVariable="BackTransformOperationOut"/>
+                                <assign name="Assign5">
+                                    <copy>
+                                        <from>$BackTransformOperationOut.outputPart/ns2:indicatorType</from>
+                                        <to>$IndicatorResponceServiceOperationIn.inputPart/ns2:indicatorType</to>
+                                    </copy>
+                                </assign>
+                                <invoke name="Invoke5" partnerLink="IndicatorResponcePartnerLink" operation="IndicatorResponceServiceOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" portType="tns:IndicatorResponceServicePortType" inputVariable="IndicatorResponceServiceOperationIn" outputVariable="IndicatorResponceServiceOperationOut"/>
+                                <if name="If4">
+                                    <condition>$IndicatorResponceServiceOperationOut.outputPart/ns1:responce = 'successIndicatorResponce'</condition>
+                                    <sequence name="Sequence4">
+                                        <assign name="Assign6">
+                                            <copy>
+                                                <from>$BackTransformOperationOut.outputPart/ns2:indicatorType</from>
+                                                <to>$OrchestrationServiceOperationOut.outputPart/ns2:indicatorType</to>
+                                            </copy>
+                                        </assign>
+                                        <reply name="Reply2" partnerLink="OrchestrationServicePartnerLink" operation="OrchestrationServiceOperation" xmlns:tns="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" portType="tns:OrchestrationServicePortType" variable="OrchestrationServiceOperationOut"/>
+                                    </sequence>
+                                </if>
+                            </sequence>
+                        </if>
+                    </sequence>
+                </if>
+            </sequence>
+        </if>
+    </sequence>
+</process>
+
+
+
+
+
+
+
+
+
+
+

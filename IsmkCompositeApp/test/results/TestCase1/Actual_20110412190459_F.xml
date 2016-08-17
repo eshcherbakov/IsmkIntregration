@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/">
+  <SOAP-ENV:Body>
+    <responce xmlns="http://www.shcherbakov.ru/responce" xmlns:msgns="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService">
+      <ns0:indicatorType xmlns="http://www.shcherbakov.ru/simpleResponce" xmlns:msgns="http://www.shcherbakov.ru/transformation" xmlns:ns0="http://www.shcherbakov.ru/responce" xmlns:ns1="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" xmlns:ns2="http://www.shcherbakov.ru/responce" xmlns:ns3="http://www.shcherbakov.ru/request">
+        <ns2:id>5</ns2:id>
+        <ns2:value>12.0</ns2:value>
+      </ns0:indicatorType>
+    </responce>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

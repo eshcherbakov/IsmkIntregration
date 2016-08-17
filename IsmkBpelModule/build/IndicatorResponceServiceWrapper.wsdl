@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<definitions
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IndicatorResponceServiceWrapper" targetNamespace="http://enterprise.netbeans.org/bpel/IndicatorResponceServiceWrapper" xmlns:tns="http://enterprise.netbeans.org/bpel/IndicatorResponceServiceWrapper" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:ns="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService">
+    <import location="http://localhost:8080/IndicatorResponceServiceService/IndicatorResponceService?WSDL" namespace="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService"/>
+    <plnk:partnerLinkType name="IndicatorResponceServiceLinkType">
+        <plnk:role name="IndicatorResponceServiceRole" portType="ns:IndicatorResponceServicePortType"/>
+    </plnk:partnerLinkType>
+</definitions>
+

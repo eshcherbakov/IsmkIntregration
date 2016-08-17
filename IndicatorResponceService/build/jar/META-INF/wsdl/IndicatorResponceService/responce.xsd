@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified"
+	targetNamespace="http://www.shcherbakov.ru/responce"
+	xmlns="http://www.shcherbakov.ru/responce"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="responce" type="responceType"></xsd:element>
+	
+    <xsd:complexType name="responceType">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" ref="indicatorType"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+	
+    <xsd:element name="indicatorType">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="id" type="xsd:int" />
+				
+                <xsd:element name="date" type="xsd:string" />
+				
+                <xsd:element name="value" type="xsd:double" />
+				
+                <xsd:element name="units" type="xsd:string" />
+				
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

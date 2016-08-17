@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="IndicatorDataService" targetNamespace="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" xmlns:ns="http://www.shcherbakov.ru/simpleResponce" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <types>
+        <xsd:schema targetNamespace="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService">
+            <xsd:import namespace="http://www.shcherbakov.ru/simpleResponce" schemaLocation="simpleResponce.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="IndicatorDataServiceOperationRequest">
+        <part name="inputPart" element="ns:simpleResponce"/>
+    </message>
+    <message name="IndicatorDataServiceOperationResponse">
+        <part name="outputPart" element="ns:simpleResponce"/>
+    </message>
+    <portType name="IndicatorDataServicePortType">
+        <operation name="IndicatorDataServiceOperation">
+            <input name="input1" message="tns:IndicatorDataServiceOperationRequest"/>
+            <output name="output1" message="tns:IndicatorDataServiceOperationResponse"/>
+        </operation>
+    </portType>
+    <binding name="IndicatorDataServiceBinding" type="tns:IndicatorDataServicePortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="IndicatorDataServiceOperation">
+            <soap:operation style="document"/>
+            <input name="input1">
+                <soap:body use="literal" parts="inputPart"/>
+            </input>
+            <output name="output1">
+                <soap:body use="literal" parts="outputPart"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="IndicatorDataServiceService">
+        <port name="IndicatorDataServicePort" binding="tns:IndicatorDataServiceBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/IndicatorDataService/IndicatorDataService/IndicatorDataServicePort"/>
+        </port>
+    </service>
+</definitions>
+
+

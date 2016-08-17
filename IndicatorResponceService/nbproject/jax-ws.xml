@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="IndicatorResponceService">
+      <implementation-class>responce.IndicatorResponceService</implementation-class>
+      <wsdl-url>file:/D:/University/Web-technology/Semestr2/KP/Step4-BPEL/IndicatorResponceService/src/java/responce/IndicatorResponceService.wsdl</wsdl-url>
+      <local-wsdl-file>IndicatorResponceService.wsdl</local-wsdl-file>
+      <service-name>IndicatorResponceServiceService</service-name>
+      <port-name>IndicatorResponceServicePortTypeBindingPort</port-name>
+      <package-name>org.netbeans.j2ee.wsdl.indicatorresponceservice.indicatorresponceservice</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <use-provider>false</use-provider>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </service>
+  </services>
+  <clients/>
+</jax-ws>

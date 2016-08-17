@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xalan="http://xml.apache.org/xslt" xmlns:ejbjarproject2="http://www.netbeans.org/ns/j2ee-ejbjarproject/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <mkdir dir="${classes.dir}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${j2ee.platform.wsimport.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-service-IndicatorRequestService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/service/IndicatorRequestService"/>
+        <property name="service-wsdl-IndicatorRequestService" location="${meta.inf}/xml-resources/web-services/IndicatorRequestService/wsdl/IndicatorRequestService.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/service/IndicatorRequestService" destdir="${build.generated.dir}/jax-wsCache/service/IndicatorRequestService" wsdl="${service-wsdl-IndicatorRequestService}" catalog="catalog.xml" extension="true" verbose="true" xnocompile="true">
+            <depends file="${wsdl-IndicatorRequestService}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/service/IndicatorRequestService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/service/IndicatorRequestService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+        <property name="targetLocation-IndicatorRequestService" location="${meta.inf}/wsdl/IndicatorRequestService"/>
+        <property name="sourceLocation-IndicatorRequestService" location="${meta.inf}/xml-resources/web-services/IndicatorRequestService/wsdl/"/>
+        <copy todir="${targetLocation-IndicatorRequestService}">
+            <fileset dir="${sourceLocation-IndicatorRequestService}"/>
+        </copy>
+    </target>
+    <target name="wsimport-service-clean-IndicatorRequestService" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/service/IndicatorRequestService"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/org/netbeans/j2ee/wsdl/indicatorrequestservice/indicatorrequestservice"/>
+    </target>
+    <target name="wsimport-service-generate" depends="wsimport-service-IndicatorRequestService"/>
+</project>

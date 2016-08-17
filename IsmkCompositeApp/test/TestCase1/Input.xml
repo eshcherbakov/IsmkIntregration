@@ -1,0 +1,12 @@
+<soapenv:Envelope xsi:schemaLocation="http://schemas.xmlsoap.org/soap/envelope/ http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://www.shcherbakov.ru/request">
+  <soapenv:Body>
+    <req:request>
+      <!--1 or more repetitions:-->
+      <req:indicatorsDataType>
+        <req:id>1</req:id>
+        <req:firstDate>2011-02-14</req:firstDate>
+        <req:lastDate>2011-05-17</req:lastDate>
+      </req:indicatorsDataType>
+    </req:request>
+  </soapenv:Body>
+</soapenv:Envelope>

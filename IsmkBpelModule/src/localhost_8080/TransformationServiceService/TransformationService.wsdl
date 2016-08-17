@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.1.3.3-hudson-757-SNAPSHOT. --><definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://www.shcherbakov.ru/request" xmlns:ns2="http://www.shcherbakov.ru/responce" xmlns:ns3="http://www.shcherbakov.ru/simpleResponce" xmlns:tns="http://www.shcherbakov.ru/transformation" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="TransformationService" targetNamespace="http://www.shcherbakov.ru/transformation">
+
+	<types>
+		<xsd:schema targetNamespace="http:http://www.shcherbakov.ru/request">
+			<xsd:import namespace="http://www.shcherbakov.ru/request" schemaLocation="http://localhost:8080/TransformationServiceService/TransformationService?xsd=1"></xsd:import>
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http:http://www.shcherbakov.ru/responce">
+			<xsd:import namespace="http://www.shcherbakov.ru/responce" schemaLocation="http://localhost:8080/TransformationServiceService/TransformationService?xsd=2"></xsd:import>
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http:http://www.shcherbakov.ru/simpleResponce">
+			<xsd:import namespace="http://www.shcherbakov.ru/simpleResponce" schemaLocation="http://localhost:8080/TransformationServiceService/TransformationService?xsd=3"></xsd:import>
+		</xsd:schema>
+	</types>
+
+	<message name="DirectTransformOperationInput">
+		<part name="inputPart" element="ns1:request"></part>
+	</message>
+
+	<message name="DirectTransformOperationOutput">
+		<part name="outputPart" element="ns3:simpleResponce"></part>
+	</message>
+
+
+	<message name="BackTransformOperationInput">
+		<part name="inputPart" element="ns3:simpleResponce"></part>
+	</message>
+
+	<message name="BackTransformOperationOutput">
+		<part name="outputPart" element="ns2:responce"></part>
+	</message>
+
+	<portType name="TransformationPortType">
+
+		<operation name="DirectTransformOperation">
+			<documentation>
+				Преобразование XML-документа в формат системы «Электронный деканат»
+			</documentation>
+			<input name="directInput" message="tns:DirectTransformOperationInput"></input>
+			<output name="directOutput" message="tns:DirectTransformOperationOutput"></output>
+		</operation>
+
+		<operation name="BackTransformOperation">
+	    <documentation>
+	    	Преобразование документа системы «Электронный деканат» в формат XML
+			</documentation>
+			<input name="backInput" message="tns:BackTransformOperationInput"></input>
+			<output name="backOutput" message="tns:BackTransformOperationOutput"></output>
+		</operation>
+
+	</portType>
+    <binding name="TransformationPortTypeBinding" type="tns:TransformationPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+        <operation name="DirectTransformOperation">
+            <soap:operation style="document"></soap:operation>
+            <input name="directInput">
+                <soap:body use="literal" parts="inputPart"></soap:body>
+            </input>
+            <output name="directOutput">
+                <soap:body use="literal" parts="outputPart"></soap:body>
+            </output>
+        </operation>
+        <operation name="BackTransformOperation">
+            <soap:operation style="document"></soap:operation>
+            <input name="backInput">
+                <soap:body use="literal" parts="inputPart"></soap:body>
+            </input>
+            <output name="backOutput">
+                <soap:body use="literal" parts="outputPart"></soap:body>
+            </output>
+        </operation>
+    </binding>
+    <service name="TransformationServiceService">
+        <port name="TransformationPortTypeBindingPort" binding="tns:TransformationPortTypeBinding">
+            <soap:address location="http://localhost:8080/TransformationServiceService/TransformationService"></soap:address>
+        </port>
+    </service>
+</definitions>

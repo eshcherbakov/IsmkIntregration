@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="TransformationService"
+	targetNamespace="http://www.shcherbakov.ru/transformation"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:ns1="http://www.shcherbakov.ru/request"
+	xmlns:ns2="http://www.shcherbakov.ru/responce"
+	xmlns:ns3="http://www.shcherbakov.ru/simpleResponce"
+	xmlns:tns="http://www.shcherbakov.ru/transformation" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+
+	<types>
+		<xsd:schema targetNamespace="http:http://www.shcherbakov.ru/request">
+			<xsd:import namespace="http://www.shcherbakov.ru/request"
+				schemaLocation="request.xsd" />
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http:http://www.shcherbakov.ru/responce">
+			<xsd:import namespace="http://www.shcherbakov.ru/responce"
+				schemaLocation="responce.xsd" />
+		</xsd:schema>
+
+		<xsd:schema targetNamespace="http:http://www.shcherbakov.ru/simpleResponce">
+			<xsd:import namespace="http://www.shcherbakov.ru/simpleResponce"
+				schemaLocation="simpleResponce.xsd" />
+		</xsd:schema>
+	</types>
+
+	<message name="DirectTransformOperationInput">
+		<part name="inputPart" element="ns1:request" />
+	</message>
+
+	<message name="DirectTransformOperationOutput">
+		<part name="outputPart" element="ns3:simpleResponce" />
+	</message>
+
+
+	<message name="BackTransformOperationInput">
+		<part name="inputPart" element="ns3:simpleResponce" />
+	</message>
+
+	<message name="BackTransformOperationOutput">
+		<part name="outputPart" element="ns2:responce" />
+	</message>
+
+	<portType name="TransformationPortType">
+
+		<operation name="DirectTransformOperation">
+			<documentation>
+				Преобразование XML-документа в формат системы «Электронный деканат»
+			</documentation>
+			<input name="directInput" message="tns:DirectTransformOperationInput" />
+			<output name="directOutput" message="tns:DirectTransformOperationOutput" />
+		</operation>
+
+		<operation name="BackTransformOperation">
+	    <documentation>
+	    	Преобразование документа системы «Электронный деканат» в формат XML
+			</documentation>
+			<input name="backInput" message="tns:BackTransformOperationInput" />
+			<output name="backOutput" message="tns:BackTransformOperationOutput" />
+		</operation>
+
+	</portType>
+    <binding name="TransformationPortTypeBinding" type="tns:TransformationPortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="DirectTransformOperation">
+            <soap:operation style="document"/>
+            <input name="directInput">
+                <soap:body use="literal" parts="inputPart"/>
+            </input>
+            <output name="directOutput">
+                <soap:body use="literal" parts="outputPart"/>
+            </output>
+        </operation>
+        <operation name="BackTransformOperation">
+            <soap:operation style="document"/>
+            <input name="backInput">
+                <soap:body use="literal" parts="inputPart"/>
+            </input>
+            <output name="backOutput">
+                <soap:body use="literal" parts="outputPart"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="TransformationServiceService">
+        <port name="TransformationPortTypeBindingPort" binding="tns:TransformationPortTypeBinding">
+            <soap:address location="http://localhost:${HttpDefaultPort}/TransformationEJBModule/TransformationService/TransformationPortTypeBindingPort"/>
+        </port>
+    </service>
+</definitions>
+
+

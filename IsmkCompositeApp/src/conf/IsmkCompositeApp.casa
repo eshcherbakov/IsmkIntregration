@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<casa xmlns="http://java.sun.com/xml/ns/casa" xmlns:ns1="http://j2ee.netbeans.org/wsdl/IndicatorRequestService/IndicatorRequestService" xmlns:ns2="http://j2ee.netbeans.org/wsdl/IndicatorDataService/IndicatorDataService" xmlns:ns3="http://j2ee.netbeans.org/wsdl/IndicatorResponceService/IndicatorResponceService" xmlns:ns4="http://www.shcherbakov.ru/transformation" xmlns:ns5="IsmkCompositeApp" xmlns:ns6="http://j2ee.netbeans.org/wsdl/IsmkBpelModule/OrchestrationService" xmlns:ns7="http://enterprise.netbeans.org/bpel/IsmkBpelModule/ismkBpelModule" xmlns:xlink="http://www.w3.org/2000/xlink">
+    <endpoints>
+        <endpoint endpoint-name="IndicatorRequestServicePort" interface-name="ns1:RequestPortType" name="endpoint1" service-name="ns1:IndicatorRequestServiceService"/>
+        <endpoint endpoint-name="IndicatorDataServicePort" interface-name="ns2:IndicatorDataServicePortType" name="endpoint2" service-name="ns2:IndicatorDataServiceService"/>
+        <endpoint endpoint-name="IndicatorResponceServicePortTypeBindingPort" interface-name="ns3:IndicatorResponceServicePortType" name="endpoint3" service-name="ns3:IndicatorResponceServiceService"/>
+        <endpoint endpoint-name="TransformationPortTypeBindingPort" interface-name="ns4:TransformationPortType" name="endpoint4" service-name="ns4:TransformationServiceService"/>
+        <endpoint endpoint-name="casaPort1" interface-name="ns6:OrchestrationServicePortType" name="endpoint5" service-name="ns5:IsmkCompositeAppService1"/>
+        <endpoint display-name="OrchestrationServicePartnerLink" endpoint-name="OrchestrationServiceRole_myRole" file-path="ismkBpelModule.bpel" interface-name="ns6:OrchestrationServicePortType" name="endpoint6" process-name="ismkBpelModule" service-name="ns7:OrchestrationServicePartnerLink"/>
+        <endpoint display-name="IndicatorRequestPartnerLink" endpoint-name="RequestRole_partnerRole" file-path="ismkBpelModule.bpel" interface-name="ns1:RequestPortType" name="endpoint7" process-name="ismkBpelModule" service-name="ns7:IndicatorRequestPartnerLink"/>
+        <endpoint display-name="TransformationPartnerLink" endpoint-name="TransformationRole_partnerRole" file-path="ismkBpelModule.bpel" interface-name="ns4:TransformationPortType" name="endpoint8" process-name="ismkBpelModule" service-name="ns7:TransformationPartnerLink"/>
+        <endpoint display-name="IndicatorDataPartnerLink" endpoint-name="IndicatorDataServiceRole_partnerRole" file-path="ismkBpelModule.bpel" interface-name="ns2:IndicatorDataServicePortType" name="endpoint9" process-name="ismkBpelModule" service-name="ns7:IndicatorDataPartnerLink"/>
+        <endpoint display-name="IndicatorResponcePartnerLink" endpoint-name="IndicatorResponceServiceRole_partnerRole" file-path="ismkBpelModule.bpel" interface-name="ns3:IndicatorResponceServicePortType" name="endpoint10" process-name="ismkBpelModule" service-name="ns7:IndicatorResponcePartnerLink"/>
+    </endpoints>
+    <service-units>
+        <service-engine-service-unit artifacts-zip="IsmkBpelModule.jar" component-name="sun-bpel-engine" defined="true" description="Represents this Service Unit" internal="true" name="IsmkCompositeApp-IsmkBpelModule" unit-name="IsmkBpelModule" unknown="false" x="136" y="99">
+            <provides endpoint="endpoint6"/>
+            <consumes endpoint="endpoint7"/>
+            <consumes endpoint="endpoint8"/>
+            <consumes endpoint="endpoint9"/>
+            <consumes endpoint="endpoint10"/>
+        </service-engine-service-unit>
+        <binding-component-service-unit artifacts-zip="sun-http-binding.jar" component-name="sun-http-binding" description="Represents this Service Unit" name="IsmkCompositeApp-sun-http-binding" unit-name="sun-http-binding">
+            <ports>
+                <port bindingType="soap" x="67" y="373">
+                    <link xlink:href="../jbiasa/IsmkCompositeApp.wsdl#xpointer(/definitions/service[@name='IsmkCompositeAppService1']/port[@name='casaPort1'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint5"/>
+                    <provides endpoint="endpoint5"/>
+                </port>
+                <port x="67" y="276">
+                    <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorDataServiceService/IndicatorDataService.wsdl#xpointer(/definitions/service[@name='IndicatorDataServiceService']/port[@name='IndicatorDataServicePort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint2"/>
+                    <provides endpoint="endpoint2"/>
+                </port>
+                <port x="67" y="197">
+                    <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.wsdl#xpointer(/definitions/service[@name='IndicatorRequestServiceService']/port[@name='IndicatorRequestServicePort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint1"/>
+                    <provides endpoint="endpoint1"/>
+                </port>
+                <port x="67" y="118">
+                    <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.wsdl#xpointer(/definitions/service[@name='IndicatorResponceServiceService']/port[@name='IndicatorResponceServicePortTypeBindingPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint3"/>
+                    <provides endpoint="endpoint3"/>
+                </port>
+                <port x="67" y="39">
+                    <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/TransformationServiceService/TransformationService.wsdl#xpointer(/definitions/service[@name='TransformationServiceService']/port[@name='TransformationPortTypeBindingPort'])" xlink:type="simple"/>
+                    <consumes endpoint="endpoint4"/>
+                    <provides endpoint="endpoint4"/>
+                </port>
+            </ports>
+        </binding-component-service-unit>
+    </service-units>
+    <connections>
+        <connection consumer="endpoint7" provider="endpoint1" state="unchanged"/>
+        <connection consumer="endpoint9" provider="endpoint2" state="unchanged"/>
+        <connection consumer="endpoint5" provider="endpoint6" state="new"/>
+        <connection consumer="endpoint10" provider="endpoint3" state="unchanged"/>
+        <connection consumer="endpoint8" provider="endpoint4" state="unchanged"/>
+    </connections>
+    <porttypes>
+        <link xlink:href="../jbiasa/IsmkCompositeApp.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorDataServiceService/IndicatorDataService.wsdl#xpointer(/definitions/portType[@name='IndicatorDataServicePortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.wsdl#xpointer(/definitions/portType[@name='RequestPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.wsdl#xpointer(/definitions/portType[@name='IndicatorResponceServicePortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/TransformationServiceService/TransformationService.wsdl#xpointer(/definitions/portType[@name='TransformationPortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/OrchestrationService.wsdl#xpointer(/definitions/portType[@name='OrchestrationServicePortType'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkCompositeApp.wsdl#xpointer(/definitions/portType[@name='dummyCasaPortType'])" xlink:type="simple"/>
+    </porttypes>
+    <bindings>
+        <link xlink:href="../jbiasa/IsmkCompositeApp.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorDataServiceService/IndicatorDataService.wsdl#xpointer(/definitions/binding[@name='IndicatorDataServiceBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.wsdl#xpointer(/definitions/binding[@name='IndicatorRequestServiceBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.wsdl#xpointer(/definitions/binding[@name='IndicatorResponceServicePortTypeBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/TransformationServiceService/TransformationService.wsdl#xpointer(/definitions/binding[@name='TransformationPortTypeBinding'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkCompositeApp.wsdl#xpointer(/definitions/binding[@name='casaBinding1'])" xlink:type="simple"/>
+    </bindings>
+    <services>
+        <link xlink:href="../jbiasa/IsmkCompositeApp.wsdl#xpointer(/definitions/service[@name='IsmkCompositeAppService1'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorDataServiceService/IndicatorDataService.wsdl#xpointer(/definitions/service[@name='IndicatorDataServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorRequestServiceService/IndicatorRequestService.wsdl#xpointer(/definitions/service[@name='IndicatorRequestServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/IndicatorResponceServiceService/IndicatorResponceService.wsdl#xpointer(/definitions/service[@name='IndicatorResponceServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkBpelModule/localhost_8080/TransformationServiceService/TransformationService.wsdl#xpointer(/definitions/service[@name='TransformationServiceService'])" xlink:type="simple"/>
+        <link xlink:href="../jbiServiceUnits/IsmkCompositeApp.wsdl#xpointer(/definitions/service[@name='IsmkCompositeAppService1'])" xlink:type="simple"/>
+    </services>
+    <regions>
+        <region name="WSDL Endpoints" width="150"/>
+        <region name="JBI Modules" width="500"/>
+        <region name="External Modules" width="200"/>
+    </regions>
+</casa>

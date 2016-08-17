@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified"
+	targetNamespace="http://www.shcherbakov.ru/request"
+	xmlns:tns="http://www.shcherbakov.ru/request"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            
+	<xsd:element name="request" type="tns:requestType"></xsd:element>
+
+	<!-- В запросе указаваются индетификатор показателя, период выборки -->
+	<xsd:complexType name="requestType">
+		<xsd:sequence>
+			<xsd:element maxOccurs="unbounded" ref="tns:indicatorsDataType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="indicatorsDataType">
+		<xsd:complexType>
+			<xsd:sequence>
+
+				<!-- Идентификатор показателя -->
+				<xsd:element name="id" type="xsd:int" />
+
+				<!-- Начало периода -->
+				<xsd:element name="firstDate" type="xsd:string" />
+
+				<!-- Конец периода -->
+				<xsd:element name="lastDate" type="xsd:string" />
+
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
